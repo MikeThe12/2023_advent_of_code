@@ -15,3 +15,19 @@ for i in range(m.shape[0]):
     s += last_el.sum()   
 
 print(s)
+
+# Part 2
+s = 0
+for i in range(m.shape[0]):
+    first_el = np.array([])
+    array = m[i]
+    while np.any(array):
+        first_el = np.append(first_el, array[0])
+        array = np.diff(array)
+    first_el = first_el[::-1]
+    diff = 0
+    for j in range(first_el.shape[0]):
+        diff = first_el[j] - diff
+    s += diff
+
+print(s)
